@@ -9,8 +9,22 @@ const newFlight = (req, res) => {
   res.render('flights/new', {errorMsg: '', title: 'Add New Flight'});
 };
 
+const create = async (req, res) => {
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  };
+  try {
+    await Flight.create(req.body);
+    res.redirect('/flights');
+  } catch (err) {
+    console.log(err);
+    res.render('movies/new', {errorMsg: err.message});
+  };
+};
+
 
 module.exports = {
   index,
-  new: newFlight
+  new: newFlight,
+  create
 }

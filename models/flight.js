@@ -20,7 +20,10 @@ const flightSchema = new Schema({
   departs: {
     type: Date,
     default: (() => {
-      return new Date().getFullYear() + 1;
+      // https://stackoverflow.com/questions/33923973/adding-1-year-to-a-date-with-javascript
+      const date = new Date();
+      date.setFullYear(date.getFullYear() + 1);
+      return date;
     })
   }
 })

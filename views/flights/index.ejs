@@ -12,10 +12,11 @@
   <tbody>
     <% flights.forEach((f) => { %>
       <tr>
-        <td><%= m.airline %></td>
-        <td><%= m.airport %></td>
-        <td><%= m.flightNo %></td>
-        <td><%= m.departs %></td>
+        <td><%= f.airline %></td>
+        <td><%= f.airport %></td>
+        <td><%= f.flightNo %></td>
+        <%/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString */%>
+        <td><%= f.departs.toLocaleTimeString('en-US', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'}) %></td>
       </tr>
     <% }) %>
   </tbody>
