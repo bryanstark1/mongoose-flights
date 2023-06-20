@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const flightsCtrl = require('../controllers/flights');
+const flightsCtrl = require('../controllers/flights')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// All routes start with /flights
+
+// GET /flights
+router.get('/', flightsCtrl.index);
 
 module.exports = router;
